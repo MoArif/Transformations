@@ -18,10 +18,8 @@ def handle_umlauts(imgs):
     imgs_names = [x.replace('ä','ae') for x in imgs]
     imgs_names = [x.replace('ö','oe') for x in imgs]
     imgs_names = [x.replace('ü','ue') for x in imgs]
-#---------------ONLY GETTING ONE FOLDER AT THE MOmENT---------------
-
-
     return imgs
+
 def showing_imgs(img_list):
     for x in range(len(img_list)):
         img = load_img(img_list[x])
@@ -36,7 +34,6 @@ def imcv2_recolor(im, a = .1):
 	t += [np.random.uniform()]
 	t += [np.random.uniform()]
 	t = np.array(t) * 2. - 1.
-
 	# random amplify each channel
 	im = im * (1 + t * a)
 	mx = 255. * (1 + a)
@@ -63,8 +60,8 @@ def imcv2_affine_trans(im):
 
 def imcv2_rotate(img):
     rows,cols,_ = img.shape
-    
-    M = cv2.getRotationMatrix2D((cols/2,rows/2),3,1)
+    rot_amount = np.random.uniform()*5
+    M = cv2.getRotationMatrix2D((cols/2,rows/2),rot_amount,1)
     dst = cv2.warpAffine(img,M,(cols,rows))
     return dst
 
