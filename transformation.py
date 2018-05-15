@@ -10,8 +10,9 @@ import pandas as pd
 import glob
 from matplotlib import pyplot as plt
 #from sklearn.pipeline import Pipeline
-
-
+# 		Code taken from 
+#https://github.com/thtrieu/darkflow/blob/master/darkflow/utils/im_transform.py
+#
 def handle_umlauts(imgs):
     imgs_names = [x.lower() for x in imgs]
     imgs_names = [x.replace('ä','ae') for x in imgs]
